@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Master - All PDF Tools</title>
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo"><i class="fa-solid fa-file-pdf"></i> PDF Master</div>
+        <nav class="nav-links">
+            <a href="#" class="active">ALL TOOLS</a>
+            <a href="#" class="btn-signup">Sign Up</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Every tool you need to work with PDFs & Images</h1>
+        <p>All tools are 100% FREE and work directly in your browser!</p>
+    </section>
+
+    <main class="container">
+        <!-- ORGANIZE -->
+        <div class="category">
+            <h2>ORGANIZE PDF</h2>
+            <div class="grid">
+                <a class="card" onclick="openTool('merge')"><i class="fa-solid fa-object-group icon-red"></i><h3>Merge PDF</h3><p>Combine multiple PDFs into one.</p></a>
+                <a class="card" onclick="openTool('split')"><i class="fa-solid fa-scissors icon-red"></i><h3>Split PDF</h3><p>Extract specific pages from a PDF.</p></a>
+                <a class="card" onclick="openTool('rotate')"><i class="fa-solid fa-rotate-right icon-red"></i><h3>Rotate PDF</h3><p>Rotate pages 90 degrees.</p></a>
+            </div>
+        </div>
+
+        <!-- CONVERT -->
+        <div class="category">
+            <h2>CONVERT</h2>
+            <div class="grid">
+                <a class="card" onclick="openTool('jpgToPdf')"><i class="fa-solid fa-image icon-yellow"></i><h3>JPG to PDF</h3><p>Convert images to PDF easily.</p></a>
+                <a class="card" onclick="openTool('pdfToJpg')"><i class="fa-solid fa-file-image icon-blue"></i><h3>PDF to JPG</h3><p>Extract images from PDF.</p></a>
+            </div>
+        </div>
+
+        <!-- EDIT & IMAGE TOOLS -->
+        <div class="category">
+            <h2>EDIT & IMAGE TOOLS</h2>
+            <div class="grid">
+                <a class="card" onclick="openTool('number')"><i class="fa-solid fa-list-ol icon-purple"></i><h3>Add Page Numbers</h3><p>Insert page numbers into your PDF.</p></a>
+                <a class="card" onclick="openTool('writeText')"><i class="fa-solid fa-pen-nib icon-orange"></i><h3>Write on Image</h3><p>Add date, number or text on image.</p></a>
+                <a class="card" onclick="openTool('ocr')"><i class="fa-solid fa-text-height icon-green"></i><h3>Extract Text (OCR)</h3><p>Copy text from screenshot to edit.</p></a>
+            </div>
+        </div>
+    </main>
+
+    <!-- UNIVERSAL MODAL (Popup) -->
+    <div id="toolModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeTool()">&times;</span>
+            <h2 id="modalTitle" style="color:#e5322d; margin-bottom:10px;">Tool</h2>
+            <p id="modalDesc" style="color:#666; margin-bottom: 20px;">Description</p>
+            
+            <input type="file" id="fileInput" class="file-input">
+            
+            <!-- Extra inputs -->
+            <div id="extraInputs" style="display:none; margin-bottom:15px; text-align:left;">
+                <div id="splitOptions" style="display:none;">
+                    <label style="font-size:14px; font-weight:bold;">Page Number to Extract:</label>
+                    <input type="number" id="splitPage" value="1" style="padding:8px; width:100%; margin-top:5px; border-radius:5px; border:1px solid #ccc;">
+                </div>
+                <div id="textOptions" style="display:none;">
+                    <label style="font-size:14px; font-weight:bold;">Text to Write (e.g., Date, Name):</label>
+                    <input type="text" id="customText" placeholder="Enter text here..." style="padding:8px; width:100%; margin-top:5px; border-radius:5px; border:1px solid #ccc;">
+                </div>
+            </div>
+
+            <button id="actionBtn" onclick="processFile()">Process File</button>
+            <p id="statusMsg" style="margin-top:15px; font-weight:bold;"></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 PDF Master. Made with ??</p>
+    </footer>
+
+    <!-- Zaroori Libraries -->
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+    <script>
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+    </script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
